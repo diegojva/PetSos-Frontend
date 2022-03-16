@@ -1,0 +1,21 @@
+img {
+width: calc(100% + 32 px ); 
+clear:both;
+height: 250px;
+/*width: 400px;*/
+object-fit: cover;
+}
+
+.example-header-image {
+    background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSx7FfWrqJ5ro7SdxlBsnmCo_mwrnRly5mHUg&usqp=CAU');
+    background-size: cover;
+  }
+
+  .ms-2 {
+    background-color: #f1f2f5;
+  }
+  
+  .ms-2:hover{
+    transition: ease 0.5s;
+    background-color: #d8d8d8;
+  }

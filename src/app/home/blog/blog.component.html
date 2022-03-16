@@ -1,0 +1,41 @@
+<br>
+<div class="container">
+    <div class="row">
+      <div class="col-md-4 mb-3" *ngFor="let item of datos">
+        <mat-card class="order-card">
+          <mat-card-header >
+            <div mat-card-avatar class="example-header-image"></div>
+            <mat-card-title><h4>Autor: {{item.owner}}</h4></mat-card-title>
+            <mat-card-subtitle>{{item.status}}</mat-card-subtitle>
+            <!--<mat-card-subtitle>Estado: {{item.estado}}</mat-card-subtitle>-->
+          </mat-card-header>
+          <div>
+            <img
+              mat-card-image
+              src={{item.img}} style="width: calc(100% + 32 px ); clear:both;"
+            />
+          </div>
+  
+          <mat-card-content style="flex-wrap: nowrap;">
+            <!--<h1>{{item.nombre}}</h1>-->
+            <h3 style="font-weight: 500;">{{item.title}}</h3>
+            <p>Fecha: {{item.fechaPublicacion}} | {{item.horaPublicacion}}</p>
+            <button mat-button [routerLink]="[item.idPublicacion, 'post-view']"  class="ms-2" >Leer más</button>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+  <br>
+
+    <p>
+      <mat-toolbar>
+        <span>PetSos App</span>
+        <span class="spacer"></span>
+        <button mat-button><i class="fab fa-2x fa-facebook"></i></button>
+        <button mat-button><i class="fab fa-2x fa-whatsapp"></i></button>
+        <button mat-button><i class="fab fa-2x fa-youtube"></i></button>
+      </mat-toolbar>
+    </p>
+
+<router-outlet></router-outlet>

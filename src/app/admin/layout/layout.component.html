@@ -1,0 +1,28 @@
+<mat-toolbar color="primary">
+  <span>Admin</span>
+
+  <button mat-button routerLink="/admin/mascotas" class="ms-2"><mat-icon>pets icon</mat-icon>&nbsp;Mascotas</button>
+  <button mat-button routerLink="solicitudes" class="ms-2"><mat-icon>receipt icon</mat-icon>&nbsp;Solicitudes</button>
+  <button mat-button routerLink="publicaciones" class="ms-2"> <mat-icon>publish icon</mat-icon>&nbsp;Publicaciones</button>
+
+  <span class="spacer"></span>
+
+  <button mat-button [matMenuTriggerFor]="menu">
+    <mat-icon>account_circle</mat-icon> Diego Jesús Vergara Aranguri
+  </button>
+
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item (click)="signOut()">
+      <mat-icon>logout</mat-icon> Cerrar sesión
+    </button>
+
+    <button mat-menu-item routerLink="/admin/reportes">
+      <mat-icon>report</mat-icon> Reportes
+    </button>
+  </mat-menu>
+</mat-toolbar>
+
+<div class="container p-5">
+  <router-outlet></router-outlet>
+</div>
+

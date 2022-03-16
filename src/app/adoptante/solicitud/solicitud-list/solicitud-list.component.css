@@ -1,0 +1,14 @@
+table {
+    width: 100%;
+
+  }
+
+  th.mat-header-cell, td.mat-cell, td.mat-footer-cell {
+    padding: 0.3rem;
+  }
+.containt-table table {
+    text-align: center;
+}
+.containt-table th.mat-header-cell{
+    text-align: center;
+}

@@ -1,0 +1,45 @@
+<h3>New Tag</h3>
+<div class="row">
+    <div class="col-md-offset-3 mx-auto">
+
+        <form (ngSubmit)="save(form.value)" autocomplete="off" [formGroup]="form" #frmLibro="ngForm">
+        <mat-form-field appearance="outline" class="d-block">
+          <mat-label>Name</mat-label>
+          <input
+            matInput
+            type="text"
+            placeholder="Name"
+            formControlName="name"
+          />
+  
+          <mat-error *ngIf="form.hasError('required', 'name')">
+            Este campo es obligatorio
+          </mat-error>
+          <mat-error *ngIf="form.hasError('minlength', 'name')">
+            Debe tener al menos 3 caracteres
+          </mat-error>
+          <mat-error *ngIf="form.hasError('maxlength', 'name')">
+            Debe tener 30 caracteres como máximo
+          </mat-error>
+        </mat-form-field>
+  
+
+
+      <br>
+      <button type="button" mat-button routerLink="/admin/publicaciones">
+        Cancelar
+      </button>
+
+        <button
+          mat-raised-button
+          color="primary"
+          type="submit"
+          class="ms-2"
+          [disabled]="frmLibro.invalid"
+        >
+          Guardar
+        </button>
+      </form>
+    </div>
+  </div>
+  

@@ -1,0 +1,197 @@
+<div class="row">
+  <div class="col-md-offset-3 mx-auto">
+    <form
+      (ngSubmit)="save()"
+      autocomplete="off"
+      [formGroup]="form"
+      #frmLibro="ngForm"
+    >
+      <mat-form-field appearance="outline" class="d-block">
+        <mat-label>Nombre</mat-label>
+        <input
+          matInput
+          type="text"
+          placeholder="Nombre"
+          formControlName="nombre"
+        />
+
+        <mat-error *ngIf="form.hasError('required', 'nombre')">
+          Este campo es obligatorio
+        </mat-error>
+        <mat-error *ngIf="form.hasError('minlength', 'nombre')">
+          Debe tener al menos 5 caracteres
+        </mat-error>
+        <mat-error *ngIf="form.hasError('maxlength', 'nombre')">
+          Debe tener 70 caracteres como máximo
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="d-block">
+        <mat-label>Tipo</mat-label>
+        <input matInput formControlName="tipo" row="5" />
+
+        <mat-error *ngIf="form.hasError('required', 'tipo')">
+          Este campo es obligatorio
+        </mat-error>
+        <mat-error *ngIf="form.hasError('minlength', 'tipo')">
+          Debe tener al menos 11 caracteres
+        </mat-error>
+        <mat-error *ngIf="form.hasError('maxlength', 'tipo')">
+          Debe tener 255 caracteres como máximo
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="d-block">
+        <mat-label>Edad</mat-label>
+        <input
+          matInput
+          type="number"
+          placeholder="Edad"
+          formControlName="edad"
+        />
+        <mat-error *ngIf="form.hasError('required', 'edad')">
+          Este campo es obligatorio
+        </mat-error>
+      </mat-form-field>
+
+      <!--PRUEBAS TAMAÑO-->
+      <mat-form-field>
+        <mat-label>Selecciona el tamaño</mat-label>
+        <mat-select disableRipple formControlName="tamano">
+          <mat-option value="Pequeño">Pequeño</mat-option>
+          <mat-option value="Mediano">Mediano</mat-option>
+          <mat-option value="Grande">Grande</mat-option>
+        </mat-select>
+
+        <mat-error *ngIf="form.hasError('required', 'tamano')">
+          Este campo es obligatorio
+        </mat-error>
+        <mat-error *ngIf="form.hasError('minlength', 'tamano')">
+          Debe tener al menos 11 caracteres
+        </mat-error>
+        <mat-error *ngIf="form.hasError('maxlength', 'tamano')">
+          Debe tener 255 caracteres como máximo
+        </mat-error>
+      </mat-form-field>
+      <br>
+      <!--PRUEBAS SEXO-->
+     <!-- <mat-form-field appearance="outline" class="d-block">
+        <mat-label>Sexo</mat-label>
+        <input matInput formControlName="sexo" row="5" />
+
+        <mat-error *ngIf="form.hasError('required', 'sexo')">
+          Este campo es obligatorio
+        </mat-error>
+        <mat-error *ngIf="form.hasError('minlength', 'sexo')">
+          Debe tener al menos 11 caracteres
+        </mat-error>
+        <mat-error *ngIf="form.hasError('maxlength', 'sexo')">
+          Debe tener 255 caracteres como máximo
+        </mat-error>
+      </mat-form-field>-->
+
+      <!--PRUEBAS NIVEL DE SEXO-->
+      <mat-form-field>
+        <mat-label>Sexo</mat-label>
+        <mat-select disableRipple formControlName="sexo">
+          <mat-option value="Macho">Macho</mat-option>
+          <mat-option value="Hembra">Hembra</mat-option>
+        </mat-select>
+
+        <mat-error *ngIf="form.hasError('required', 'sexo')">
+          Este campo es obligatorio
+        </mat-error>
+      </mat-form-field>
+
+      <br>
+      <!--PRUEBAS NIVEL DE ACTIVIDAD-->
+      <mat-form-field>
+        <mat-label>Nivel de actividad</mat-label>
+        <mat-select disableRipple formControlName="nivelActividad">
+          <mat-option value="Bajo">Bajo</mat-option>
+          <mat-option value="Regular">Regular</mat-option>
+          <mat-option value="Alto">Alto</mat-option>
+          <mat-option value="Muy alto">Muy alto</mat-option>
+        </mat-select>
+
+        <mat-error *ngIf="form.hasError('required', 'nivelActividad')">
+          Este campo es obligatorio
+        </mat-error>
+      </mat-form-field>
+
+      <!--PRUEBAS DESCRIPCIÓN-->
+      <mat-form-field appearance="outline" class="d-block">
+        <mat-label>Descripcion</mat-label>
+        <textarea matInput formControlName="descripcion" row="5"></textarea>
+
+        <mat-error *ngIf="form.hasError('required', 'descripcion')">
+          Este campo es obligatorio
+        </mat-error>
+        <mat-error *ngIf="form.hasError('minlength', 'descripcion')">
+          Debe tener al menos 11 caracteres
+        </mat-error>
+        <mat-error *ngIf="form.hasError('maxlength', 'descripcion')">
+          Debe tener 150 caracteres como máximo
+        </mat-error>
+      </mat-form-field>
+
+      <!--PRUEBAS FOTO-->
+      <mat-form-field appearance="outline" class="d-block">
+        <mat-label>Foto</mat-label>
+        <input matInput formControlName="foto" row="5" />
+
+        <mat-error *ngIf="form.hasError('required', 'foto')">
+          Este campo es obligatorio
+        </mat-error>
+        <mat-error *ngIf="form.hasError('minlength', 'foto')">
+          Debe tener al menos 5 caracteres
+        </mat-error>
+        <mat-error *ngIf="form.hasError('maxlength', 'foto')">
+          Debe tener 250 caracteres como máximo
+        </mat-error>
+        <br />
+        <div *ngIf="form.controls['foto'].value">
+          <img
+            src="{{ form.controls['foto'].value }}"
+            alt="mascota"
+            style="width: 300px"
+          />
+        </div>
+      </mat-form-field>
+      <!-----preview-->
+
+      <!--PRUEBAS ESTADO-->
+      <mat-form-field>
+        <mat-label>Estado</mat-label>
+        <mat-select disableRipple formControlName="estado">
+          <mat-option value="P">Pendiente</mat-option>
+          <mat-option value="A">Adoptado</mat-option>
+        </mat-select>
+
+        <mat-error *ngIf="form.hasError('required', 'estado')">
+          Este campo es obligatorio
+        </mat-error>
+        <mat-error *ngIf="form.hasError('minlength', 'estado')">
+          Debe tener al menos 11 caracteres
+        </mat-error>
+        <mat-error *ngIf="form.hasError('maxlength', 'estado')">
+          Debe tener 255 caracteres como máximo
+        </mat-error> </mat-form-field
+      ><br /><br />
+
+      <button type="button" mat-button routerLink="/admin/mascotas">
+        Cancelar
+      </button>
+
+      <button
+        mat-raised-button
+        color="primary"
+        type="submit"
+        class="ms-2"
+        [disabled]="frmLibro.invalid"
+      >
+        Guardar
+      </button>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,159 @@
+<div class="row">
+    <div class="col-md-offset-3 mx-auto">
+
+        <form (ngSubmit)="save(form.value)" autocomplete="off" [formGroup]="form" #frmLibro="ngForm">
+            
+            <h3 style="font-weight: 500;">Actualiza el estado de la solicitud</h3>
+
+            <mat-form-field appearance="outline" class="d-block">
+                <mat-label>Nombre</mat-label>
+                <input matInput type="text" placeholder="Nombre" formControlName="nombre" readonly />
+
+                <mat-error *ngIf="form.hasError('required', 'nombre')">
+                    Este campo es obligatorio
+                </mat-error>
+                <mat-error *ngIf="form.hasError('minlength', 'nombre')">
+                    Debe tener al menos 3 caracteres
+                </mat-error>
+                <mat-error *ngIf="form.hasError('maxlength', 'nombre')">
+                    Debe tener 70 caracteres como máximo
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" class="d-block">
+                <mat-label>Apellido</mat-label>
+                <input matInput formControlName="apellido" placeholder="Apellido" readonly>
+
+                <mat-error *ngIf="form.hasError('required', 'apellido')">
+                    Este campo es obligatorio
+                </mat-error>
+                <mat-error *ngIf="form.hasError('minlength', 'apellido')">
+                    Debe tener al menos 6 caracteres
+                </mat-error>
+                <mat-error *ngIf="form.hasError('maxlength', 'apellido')">
+                    Debe tener 255 caracteres como máximo
+                </mat-error>
+            </mat-form-field>
+
+            <!--PRUEBAS DIRECCION-->
+            <mat-form-field appearance="outline" class="d-block">
+                <mat-label>Dirección</mat-label>
+                <input matInput formControlName="direccion" row="1" readonly>
+
+                <mat-error *ngIf="form.hasError('required', 'direccion')">
+                    Este campo es obligatorio
+                </mat-error>
+                <mat-error *ngIf="form.hasError('minlength', 'direccion')">
+                    Debe tener al menos 5 caracteres
+                </mat-error>
+                <mat-error *ngIf="form.hasError('maxlength', 'direccion')">
+                    Debe tener 255 caracteres como máximo
+                </mat-error>
+            </mat-form-field>
+
+            <!--PRUEBAS CIUDAD-->
+            <mat-form-field appearance="outline" class="d-block">
+                <mat-label>Ciudad</mat-label>
+                <input type="text" matInput formControlName="ciudad" readonly>
+
+                <mat-error *ngIf="form.hasError('required', 'ciudad')">
+                    Este campo es obligatorio
+                </mat-error>
+                <mat-error *ngIf="form.hasError('minlength', 'ciudad')">
+                    Debe tener al menos 3 caracteres
+                </mat-error>
+                <mat-error *ngIf="form.hasError('maxlength', 'ciudad')">
+                    Debe tener 255 caracteres como máximo
+                </mat-error>
+            </mat-form-field>
+
+            <!--PRUEBAS DNI-->
+            <mat-form-field appearance="outline" class="d-block">
+                <mat-label>DNI</mat-label>
+                <input matInput type="text" placeholder="DNI" formControlName="dni" readonly/>
+                <mat-error *ngIf="form.hasError('required', 'dni')">
+                    Este campo es obligatorio
+                </mat-error>
+                <mat-error *ngIf="form.hasError('minlength', 'dni')">
+                    Debe tener al menos 8 digítos
+                </mat-error>
+                <mat-error *ngIf="form.hasError('maxlength', 'dni')">
+                    Debe tener 8 digítos como máximo
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" class="d-block">
+                <mat-label>Teléfono</mat-label>
+                <input type="text" matInput formControlName="telefono" placeholder="telefono" pattern="[0-9]{9}" readonly/>
+
+                <mat-error *ngIf="form.hasError('required', 'telefono')">
+                    Este campo es obligatorio
+                </mat-error>
+                <mat-error *ngIf="form.hasError('minlength', 'telefono')">
+                    Debe tener al menos 9 caracteres
+                </mat-error>
+                <mat-error *ngIf="form.hasError('maxlength', 'telefono')">
+                    Debe tener 9 caracteres como máximo
+                </mat-error>
+            </mat-form-field>
+
+            <!--CORREO-->
+            <mat-form-field appearance="outline" class="d-block">
+                <mat-label>Correo</mat-label>
+                <input type="text" matInput formControlName="correo" row="5" readonly>
+
+                <mat-error *ngIf="form.hasError('required', 'correo')">
+                    Este campo es obligatorio
+                </mat-error>
+                <mat-error *ngIf="form.hasError('minlength', 'correo')">
+                    Debe tener al menos 6 caracteres
+                </mat-error>
+                <mat-error *ngIf="form.hasError('maxlength', 'correo')">
+                    Debe tener 80 caracteres como máximo
+                </mat-error>
+            </mat-form-field>
+
+            <!--DETALLE SOLICITUD-->
+            <mat-form-field appearance="outline" class="d-block">
+                <mat-label>Detalle Solicitud </mat-label>
+                <textarea matInput formControlName="detalleSolicitud" row="5" readonly></textarea>
+
+                <mat-error *ngIf="form.hasError('required', 'detalleSolicitud')">
+                    Este campo es obligatorio
+                </mat-error>
+                <mat-error *ngIf="form.hasError('minlength', 'detalleSolicitud')">
+                    Debe tener al menos 10 caracteres
+                </mat-error>
+                <mat-error *ngIf="form.hasError('maxlength', 'detalleSolicitud')">
+                    Debe tener 255 caracteres como máximo
+                </mat-error>
+            </mat-form-field>
+
+                <!--PRUEBAS ESTADO-->
+            <mat-form-field>
+                <mat-label>Estado</mat-label>
+                <mat-select disableRipple formControlName="estado">
+                    <mat-option value="P">Pendiente</mat-option>
+                    <mat-option value="A">Adoptado</mat-option>
+                    <mat-option value="R">Rechazado</mat-option>
+                </mat-select>
+                
+                <mat-error *ngIf="form.hasError('required', 'estado')">
+                    Este campo es obligatorio
+                </mat-error>
+                <mat-error *ngIf="form.hasError('minlength', 'estado')">
+                    Debe tener al menos 11 caracteres
+                </mat-error>
+                <mat-error *ngIf="form.hasError('maxlength', 'estado')">
+                    Debe tener 255 caracteres como máximo
+                </mat-error>
+            </mat-form-field><br><br>
+
+            <button type="button" mat-button routerLink="/admin/solicitudes">Cancelar</button>
+
+            <button mat-raised-button color="primary" type="submit" class="ms-2" [disabled]="frmLibro.invalid">
+                Guardar
+            </button>
+        </form>
+    </div>
+</div>

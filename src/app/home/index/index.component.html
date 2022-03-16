@@ -1,0 +1,37 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-4 mb-3" *ngFor="let item of datos">
+      <mat-card class="order-card">
+        <mat-card-header>
+          <div mat-card-avatar class="example-header-image"></div>
+          <mat-card-title>{{item.nombre}}</mat-card-title>
+          <mat-card-subtitle>Estado: {{item.estado}}</mat-card-subtitle>
+        </mat-card-header>
+        <div>
+          <img
+            mat-card-image
+            src={{item.foto}} style="width: calc(100% + 32 px ); clear:both;"
+          />
+          <h5>*This image is referential</h5>
+        </div>
+
+        <mat-card-content style="flex-wrap: nowrap;">
+          <!--<h1>{{item.nombre}}</h1>-->
+          <p>Sexo: {{item.sexo}}</p>
+          <button mat-button [routerLink]="['../adoptante/solicitud',item.idMascota, 'new']" class="ms-2" >Postular</button>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</div>
+
+  <p>
+    <mat-toolbar>
+      <span>PetSos App</span>
+      <span class="spacer"></span>
+      <button mat-button><i class="fab fa-2x fa-facebook"></i></button>
+      <button mat-button><i class="fab fa-2x fa-whatsapp"></i></button>
+      <button mat-button><i class="fab fa-2x fa-youtube"></i></button>
+    </mat-toolbar>
+  </p>
+  <router-outlet></router-outlet>

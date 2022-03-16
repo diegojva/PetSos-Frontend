@@ -1,0 +1,29 @@
+.container{
+    padding: 0.5em;
+}
+.order-card {
+    max-width: 400px;
+    margin: auto;
+  }
+  
+  .example-header-image {
+    background-image: url('https://rcopetcare.com/wp-content/uploads/2020/07/dog.png');
+    background-size: cover;
+  }
+.mat-card-image{
+    height: 350px;
+    /*width: 400px;*/
+    object-fit: cover;
+}
+.order-card:hover{
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  transition: 0.3s;
+}
+.ms-2 {
+  background-color: #f1f2f5;
+}
+
+.ms-2:hover{
+  transition: ease 0.5s;
+  background-color: #d8d8d8;
+}

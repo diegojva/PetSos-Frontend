@@ -1,0 +1,47 @@
+<h3 class="fw-bold">Lista de Publicaciones</h3>
+
+<div class="text-end">
+  <button mat-raised-button color="primary" routerLink="/admin/publicacion/new">
+    <mat-icon>add</mat-icon>&nbsp; Nueva publicación
+  </button>&nbsp;&nbsp;
+  <button mat-raised-button color="primary" routerLink="/admin/etiqueta/new">
+    <mat-icon> scatter_plot</mat-icon>&nbsp; Etiquetas
+  </button>
+</div>
+<!--<div class="example-header">
+  <mat-form-field>
+    <input
+      matInput
+      type="text" class="form-control" name="filterPost" placeholder="Buscar Publicación" [(ngModel)]="filterPost"
+    />
+  </mat-form-field>
+</div>-->
+
+<br>
+<div class="example-header">
+  <mat-form-field>
+    <input matInput type="text" class="form-control" name="filterPost" placeholder="Buscar Publicación"
+      [(ngModel)]="filterPost" />
+  </mat-form-field>
+</div>
+
+  <!-- Cards with media area -->
+  <mat-card class="example-card" *ngFor="let item of datos | filterBy: filterPost" style="margin:15px;">
+    <mat-card-title-group >
+      <mat-card-title>{{item.title}}</mat-card-title>
+      <mat-card-subtitle>Publicador: {{item.owner}}</mat-card-subtitle>
+      <mat-card-subtitle>Fecha de publicación: {{item.fechaPublicacion}} </mat-card-subtitle>
+      <mat-card-subtitle>Hora: {{item.horaPublicacion}}</mat-card-subtitle>
+      <mat-card-subtitle>Estado: {{item.status}}</mat-card-subtitle>
+      <mat-card-subtitle style="display: inline-block;">Etiquetas: &nbsp;</mat-card-subtitle><mat-card-subtitle *ngFor="let serie of item.tags; let j = index" style="text-transform: uppercase; display: inline-block;">{{serie.name}} | &nbsp;</mat-card-subtitle>
+      <img mat-card-lg-image src={{item.img}}>
+    </mat-card-title-group>
+    <button mat-raised-button color="primary"  title="Editar Publicación" [routerLink]="[item.idPublicacion, 'edit']">
+      <mat-icon>edit</mat-icon>&nbsp;
+    </button> &nbsp;
+    <button mat-raised-button color="primary"  title="Eliminar publicación" (click)="eliminar(item.idPublicacion)">
+      <mat-icon>delete</mat-icon>&nbsp;
+    </button>
+  </mat-card>
+
+<mat-card-subtitle style="font-weight: bold;">*Recuerda que las publicaciones están listadas de acuerdo a la fecha y hora de publicación</mat-card-subtitle>

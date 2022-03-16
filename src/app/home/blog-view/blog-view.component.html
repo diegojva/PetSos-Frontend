@@ -1,0 +1,43 @@
+
+  <br>
+<div class="container">
+    <div class="row">
+        <div class="card text-center card border-primary mb-3" >
+            <div class="card-header" style="font-size: 2em;">
+                {{datos.title}}
+            </div>
+            <div class="card-body">
+                <img
+                mat-card-image
+                src={{datos.img}} style="width: calc(100% + 32 px ); clear:both;"
+              />
+              <br> <br>
+              <p class="card-text">Autor: {{datos.owner}}</p>
+
+              <p class="card-text" style="line-height: 2.5em;  text-align: justify;">{{datos.description}}<br/></p>
+              <!--<button type="button" class="btn btn-primary">Compartir</button>--><br/>
+              <div class="share-buttons-row"><h3>Compartir: &nbsp;</h3>
+                <!--Facebook's Button -->
+                <div class="share-fb"></div>
+                <!--Twitter's Button -->
+                <div class="share-twitter"></div>
+            </div>
+            <div class="card-footer text-muted">
+              Fecha: {{datos.fechaPublicacion}} | {{datos.horaPublicacion}}
+            </div>
+          </div>
+    </div>
+  </div>
+  <br>
+
+    <p>
+      <mat-toolbar>
+        <span>PetSos App</span>
+        <span class="spacer"></span>
+        <button mat-button><i class="fab fa-2x fa-facebook"></i></button>
+        <button mat-button><i class="fab fa-2x fa-whatsapp"></i></button>
+        <button mat-button><i class="fab fa-2x fa-youtube"></i></button>
+      </mat-toolbar>
+    </p>
+
+<router-outlet></router-outlet>

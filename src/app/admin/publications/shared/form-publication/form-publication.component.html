@@ -1,0 +1,124 @@
+<div class="row">
+    <div class="col-md-offset-3 mx-auto">
+      <form
+        (ngSubmit)="save()"
+        autocomplete="off"
+        [formGroup]="form"
+        #frmLibro="ngForm"
+      >
+        <mat-form-field appearance="outline" class="d-block">
+          <mat-label>Autor</mat-label>
+          <input
+            matInput
+            type="text"
+            placeholder="Autor"
+            formControlName="owner"
+          />
+  
+          <mat-error *ngIf="form.hasError('required', 'owner')">
+            Este campo es obligatorio
+          </mat-error>
+          <mat-error *ngIf="form.hasError('minlength', 'owner')">
+            Debe tener al menos 8 caracteres
+          </mat-error>
+          <mat-error *ngIf="form.hasError('maxlength', 'owner')">
+            Debe tener 100 caracteres como máximo
+          </mat-error>
+        </mat-form-field>
+  
+        <mat-form-field appearance="outline" class="d-block">
+          <mat-label>Título</mat-label>
+          <input matInput formControlName="title" row="5" />
+  
+          <mat-error *ngIf="form.hasError('required', 'title')">
+            Este campo es obligatorio
+          </mat-error>
+          <mat-error *ngIf="form.hasError('minlength', 'title')">
+            Debe tener al menos 11 caracteres
+          </mat-error>
+          <mat-error *ngIf="form.hasError('maxlength', 'title')">
+            Debe tener 255 caracteres como máximo
+          </mat-error>
+        </mat-form-field>
+
+
+        <!--PRUEBAS DESCRIPCIÓN-->
+        <mat-form-field appearance="outline" class="d-block">
+          <mat-label>Descripcion</mat-label>
+          <textarea matInput formControlName="description" row="5"></textarea>
+  
+          <mat-error *ngIf="form.hasError('required', 'description')">
+            Este campo es obligatorio
+          </mat-error>
+          <mat-error *ngIf="form.hasError('minlength', 'description')">
+            Debe tener al menos 30 caracteres
+          </mat-error>
+        </mat-form-field>
+
+              <!--PRUEBAS FOTO-->
+      <mat-form-field appearance="outline" class="d-block">
+        <mat-label>Foto</mat-label>
+        <input matInput formControlName="img" row="5" />
+
+        <mat-error *ngIf="form.hasError('required', 'img')">
+          Este campo es obligatorio
+        </mat-error>
+        <mat-error *ngIf="form.hasError('minlength', 'img')">
+          Debe tener al menos 5 caracteres
+        </mat-error>
+        <mat-error *ngIf="form.hasError('maxlength', 'img')">
+          Debe tener 500 caracteres como máximo
+        </mat-error>
+        <br />
+        <div *ngIf="form.controls['img'].value">
+          <img
+            src="{{ form.controls['img'].value }}"
+            alt="mascota"
+            style="width: 300px"
+          />
+        </div>
+      </mat-form-field>
+      <!-----preview-->
+
+      <!--PRUEBAS  ESTADO-->
+      <mat-form-field>
+        <mat-label>Estado</mat-label>
+        <mat-select disableRipple formControlName="status">
+          <mat-option value="Nuevo">Nuevo</mat-option>
+          <mat-option value="Normal" >Normal</mat-option>
+          <mat-option value="Destacado" >Destacado</mat-option>
+        </mat-select>
+
+        <mat-error *ngIf="form.hasError('required', 'status')">
+          Este campo es obligatorio
+        </mat-error>
+      </mat-form-field>
+      <br>
+
+      <!--TAGS-->
+      <mat-form-field appearance="fill">
+        <mat-label>Etiquetas</mat-label>
+        <mat-select formControlName="tags" multiple >
+          <mat-option *ngFor="let tag of tags" [value]="tag">{{tag.name}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <!--END TAGS-->
+
+      <br>
+      <button type="button" mat-button routerLink="/admin/publicaciones">
+        Cancelar
+      </button>
+
+        <button
+          mat-raised-button
+          color="primary"
+          type="submit"
+          class="ms-2"
+          [disabled]="frmLibro.invalid"
+        >
+          Guardar
+        </button>
+      </form>
+    </div>
+  </div>
+  
